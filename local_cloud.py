@@ -372,57 +372,7 @@ for i in np.arange(125):
         if graph[i][j] == 1:
             G.add_weighted_edges_from([(i, j, 1)])
 
-data = pd.DataFrame(columns=['函数集中的函数个数',
-                             '每个边缘节点可以缓存的函数个数',
-                             '每个边缘节点处理能力的中位数',
-                             '每个边缘节点距离云计算中心的跳数',
-                             '每个边缘节点平均每秒到达的请求个数',
-                             '固定带宽',
-                             '函数置换策略',
-                             '任务排序策略',
-                             '节点选择策略',
-                             '卸载算法',
-                             '平均延迟时间'])
 
-'''
-time-become-bigger
-time_become_smaller
-data_become_bigger
-data_become_smaller
-ratio_become_bigger
-ratio_become_smaller
-deadline_become_bigger
-TFHO(func_n, func_cache, func_deal_media, cloud_hop, _lambda, func_tran, func_repl, task_sort)
-'''
-
-# print(TFHO(40, 5, 200, 10, 8, 0.1, 0, 1))
-# print(TFHO(40, 5, 200, 10, 8, 0.1, 1, 1))
-# print(TFHO(40, 5, 200, 10, 8, 0.1, 2, 1))
-
-# func_repl_str = "LRU"  #0
-# func_repl_str = "LFU"  #1
-func_repl_str = "FIFO"  #2
-
-for fn in range(20, 50, 10):#20 30 40
-    for fc in range(5, 20, 5):#5 10 15
-        for fdm in range(200, 600, 100):#200 300 400 500
-            for ch in range(10, 25, 5):#10 15 20
-                for lm in range(4, 14, 2):#4 6 8 10 12
-                    for ft in np.arange(0.1, 0.25, 0.05):#0.1 0.15 0.2
-                        tss = 7
-                        t1 = TFHO(fn, fc, fdm, ch, lm, ft, 2, tss)
-                        t2 = TFHO(fn, fc, fdm, ch, lm, ft, 2, tss)
-                        t3 = TFHO(fn, fc, fdm, ch, lm, ft, 2, tss)
-                        t4 = TFHO(fn, fc, fdm, ch, lm, ft, 2, tss)
-                        t5 = TFHO(fn, fc, fdm, ch, lm, ft, 2, tss)
-                        if tss == 1:
-                            task_sort_str = "time-bg"
-                        elif tss == 3:
-                            task_sort_str = "data-bg"
-                        elif tss == 5:
-                            task_sort_str = "ratio-bg"
-                        elif tss == 7:
-                            task_sort_str = "ddl-bg"
-                        data.loc[len(data)] = [fn, fc, fdm, ch, lm, ft, func_repl_str, task_sort_str, "none", 'local_cloud', (t1 + t2 + t3 + t4 + t5) / 5]
-
-data.to_csv("data/2-7.csv")
+print(TFHO(40, 5, 200, 10, 8, 0.1, 0, 1))
+print(TFHO(40, 5, 200, 10, 8, 0.1, 1, 1))
+print(TFHO(40, 5, 200, 10, 8, 0.1, 2, 1))
