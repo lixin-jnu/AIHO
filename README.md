@@ -1,2 +1,2 @@
 # AIHO
-This is the code for paper "Hybrid Task Offloading for Serverless Computing in the Multi-edge-to-Cloud Environment"
+This is the code for paper "AIHO: Enhancing Task Offloading and Reducing Latency in Serverless Multi-Edge-to-Cloud Systems".
